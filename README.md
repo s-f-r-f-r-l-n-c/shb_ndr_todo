@@ -7,7 +7,7 @@ shb_ndr_tod adalah aplikasi Android untuk membuat todo list...
 ## Screenshot
 
 <p align="center">
-  <img src=".readme-assets/shb_ndr_todo-1.png?raw=true" />
+  <img src=".readme-assets/shb_ndr_todo-2.png?raw=true" />
 </p>
 
 ## Cara Mencoba Kode Ini
