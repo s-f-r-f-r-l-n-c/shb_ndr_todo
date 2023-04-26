@@ -50,7 +50,6 @@ class TodoListDBHelper(context: Context): SQLiteOpenHelper(context,DATABASE_NAME
         try{
             cursor = db.rawQuery(SQL, null)
         }catch (e: SQLiteException) {
-            db.execSQL(SQL)
             return ArrayList()
         }
 
