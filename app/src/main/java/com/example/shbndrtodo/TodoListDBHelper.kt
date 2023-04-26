@@ -18,7 +18,7 @@ class TodoListDBHelper(context: Context): SQLiteOpenHelper(context,DATABASE_NAME
 
     override fun onCreate(db: SQLiteDatabase?) {
         val SQL = ("CREATE TABLE " + TABLE_TODOS + "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_TITLE + " TEXT," + COL_DESCRIPTION + " TEXT" + ")")
-        db?.execSQL(SQL)
+        db!!.execSQL(SQL)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -30,22 +30,22 @@ class TodoListDBHelper(context: Context): SQLiteOpenHelper(context,DATABASE_NAME
     fun addTodo(todo: TodoModel):Long{
         val db = this.writableDatabase
 
-        val contentValues = ContentValues()
-        contentValues.put(COL_TITLE, todo.title)
-        contentValues.put(COL_DESCRIPTION, todo.description)
+        val cv = ContentValues()
+        cv.put(COL_TITLE, todo.title)
+        cv.put(COL_DESCRIPTION, todo.description)
 
-        val success = db.insert(TABLE_TODOS, null, contentValues)
+        val ret = db.insert(TABLE_TODOS, null, cv)
 
         db.close()
-        return success
+        return ret
     }
 
     fun readAllTodos():List<TodoModel>{
         val todoList: ArrayList<TodoModel> = ArrayList<TodoModel>()
         val SQL = "SELECT  * FROM ${TABLE_TODOS}"
 
-        val db = this.readableDatabase
         var cursor: Cursor? = null
+        val db = this.readableDatabase
 
         try{
             cursor = db.rawQuery(SQL, null)
@@ -75,27 +75,28 @@ class TodoListDBHelper(context: Context): SQLiteOpenHelper(context,DATABASE_NAME
     fun updateTodo(todo: TodoModel):Int{
         val db = this.writableDatabase
 
-        val contentValues = ContentValues()
-        contentValues.put(COL_ID, todo.id)
-        contentValues.put(COL_TITLE, todo.title)
-        contentValues.put(COL_DESCRIPTION,todo.description )
+        val cv = ContentValues()
+        cv.put(COL_ID, todo.id)
+        cv.put(COL_TITLE, todo.title)
+        cv.put(COL_DESCRIPTION,todo.description )
 
-        val success = db.update(TABLE_TODOS, contentValues,"id=" + todo.id,null)
+        val ret = db.update(TABLE_TODOS, cv,"id=" + todo.id,null)
 
         db.close()
-        return success
+
+        return ret
     }
 
     fun deleteTodo(todo: TodoModel):Int{
         val db = this.writableDatabase
 
-        val contentValues = ContentValues()
-        contentValues.put(COL_ID, todo.id)
+        val cv = ContentValues()
+        cv.put(COL_ID, todo.id)
 
-        val success = db.delete(TABLE_TODOS,"id=" + todo.id,null)
+        val ret = db.delete(TABLE_TODOS,"id=" + todo.id,null)
 
         db.close()
 
-        return success
+        return ret
     }
 }
