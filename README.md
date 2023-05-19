@@ -25,5 +25,5 @@ Kemudian, build dan jalankan.
 ## Screenshot
 
 <p align="center">
-  <img src=".readme-assets/shb_ndr_todo-2.png?raw=true" />
+  <img src="https://github.com/shbfrlnc/shbfrlnc-images/blob/main/gratisan/shb_ndr_todo/screenshot-1.png?raw=true" />
 </p>
