@@ -1,9 +1,5 @@
 # shb_ndr_todo - Aplikasi Android untuk Membuat Todo List
 
-## Link
-
-https://shbfrlnc.github.io/shb_ndr_todo.html
-
 ## Software Apakah Ini?
 
 shb_ndr_tod adalah aplikasi Android untuk membuat todo list...
